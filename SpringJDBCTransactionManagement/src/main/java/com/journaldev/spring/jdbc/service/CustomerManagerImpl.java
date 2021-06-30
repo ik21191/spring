@@ -1,5 +1,6 @@
 package com.journaldev.spring.jdbc.service;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.journaldev.spring.jdbc.dao.CustomerDAO;
@@ -17,7 +18,12 @@ public class CustomerManagerImpl implements CustomerManager {
 	@Override
 	@Transactional
 	public void createCustomer(Customer cust) {
-		customerDAO.createCustomer(cust);
+		try {
+			customerDAO.createCustomer(cust);	
+		} catch (DataAccessException dae) {
+			System.out.println("Exception is::::::::::::::::::::::::::::::::::::: " + dae);
+		}
+		
 	}
 	
 	@Override
