@@ -8,7 +8,7 @@ import com.mypack.entity.PersonEntity;
 
 public class JPADemo {
 	public static void main(String[] args) {
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("LOCAL_PERSISTENCE");
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("LOCAL_PERSISTENCE2");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
 		System.out.println("Starting Transaction");
@@ -21,9 +21,13 @@ public class JPADemo {
 		System.out.println(person);
 		
 		System.out.println("Deleting Employee with ID = " + personEntity.getId());
-		entityManager.remove(person);
+		try {
+			entityManager.remove(person);
+		} catch(Exception e) {
+			System.out.println(e);
+		}
 		entityManager.getTransaction().commit();
-		
+				
 		System.out.println("Transaction committed.");
 
 		// close the entity manager
