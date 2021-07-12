@@ -25,7 +25,7 @@ public class CityEntity {
 
 	
 	public CityEntity() {
-		
+		System.out.println("Object of CityEntity created.");
 	}
 
 	public CityEntity(String cityName) {

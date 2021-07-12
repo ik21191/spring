@@ -36,6 +36,7 @@ public class PersonEntity {
 	private CityEntity city;
 
 	public PersonEntity() {
+		System.out.println("Object of PersonEntity created.");
 	}
 
 	public PersonEntity(String firstName, String lastName, String email, CityEntity city) {
