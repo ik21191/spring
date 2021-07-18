@@ -30,4 +30,10 @@ public class CityModel {
 		this.cityName = cityName;
 	}
 
+	@Override
+	public String toString() {
+		return "CityModel [id=" + id + ", cityName=" + cityName + "]";
+	}
+	
+	
 }

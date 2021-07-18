@@ -8,4 +8,5 @@ import com.mypack.model.PersonModel;
 public interface PersonDao {
    void add(PersonModel personModel);
    List<PersonEntity> listPersons();
+   public PersonModel findPerson(long id);
 }

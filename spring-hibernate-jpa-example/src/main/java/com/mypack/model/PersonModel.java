@@ -1,5 +1,7 @@
 package com.mypack.model;
 
+import java.util.List;
+
 public class PersonModel {
 
 	private Long id;
@@ -11,16 +13,18 @@ public class PersonModel {
 	private String email;
 
 	private CityModel city;
+	private List<PersonIdentityModel> personIdentityModelList;
 
 	public PersonModel() {
 	}
 
-	public PersonModel(String firstName, String lastName, String email, CityModel city) {
+	public PersonModel(String firstName, String lastName, String email, CityModel city, List<PersonIdentityModel> personIdentityModelList) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.city = city;
+		this.personIdentityModelList = personIdentityModelList;
 	}
 
 	public Long getId() {
@@ -63,4 +67,20 @@ public class PersonModel {
 		this.city = city;
 	}
 
+	
+	public List<PersonIdentityModel> getPersonIdentityModelList() {
+		return personIdentityModelList;
+	}
+
+	public void setPersonIdentityModelList(List<PersonIdentityModel> personIdentityModelList) {
+		this.personIdentityModelList = personIdentityModelList;
+	}
+
+	@Override
+	public String toString() {
+		return "PersonModel [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", city=" + city + ", personIdentityModelList=" + personIdentityModelList + "]";
+	}
+
+	
 }

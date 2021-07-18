@@ -1,5 +1,7 @@
 package com.mypack.entity;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -16,8 +19,8 @@ import javax.persistence.Table;
 public class PersonEntity {
 
 	@Id
-	@SequenceGenerator(sequenceName = "CUSTOMER_ID_SEQ", initialValue = 1, allocationSize = 1, name = "CUSTOMER_ID_SEQ_GENERATOR")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CUSTOMER_ID_SEQ_GENERATOR")
+	@SequenceGenerator(sequenceName = "PERSON_ID_SEQ", initialValue = 1, allocationSize = 1, name = "PERSON_ID_SEQ_GENERATOR")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PERSON_ID_SEQ_GENERATOR")
 	@Column(name = "PERSON_ID")
 	private Long id;
 
@@ -34,6 +37,9 @@ public class PersonEntity {
 	@ManyToOne(cascade = CascadeType.ALL)// CascadeType.ALL is required to insert into database
 	@JoinColumn(name = "CITY_ID")
 	private CityEntity city;
+	
+	@OneToMany(mappedBy = "personEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<PersonIdentity> personIdentityList;
 
 	public PersonEntity() {
 		System.out.println("Object of PersonEntity created.");
@@ -89,4 +95,12 @@ public class PersonEntity {
 		this.city = city;
 	}
 
+	public List<PersonIdentity> getPersonIdentityList() {
+		return personIdentityList;
+	}
+
+	public void setPersonIdentityList(List<PersonIdentity> personIdentityList) {
+		this.personIdentityList = personIdentityList;
+	}
+	
 }

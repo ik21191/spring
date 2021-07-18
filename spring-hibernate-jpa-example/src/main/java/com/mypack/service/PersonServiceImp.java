@@ -31,5 +31,11 @@ public class PersonServiceImp implements PersonService {
    public List<PersonEntity> listPersons() {
       return userDao.listPersons();
    }
+   
+   @Transactional(readOnly = true)
+   @Override
+   public PersonModel findPerson(long id) {
+	   return userDao.findPerson(id);
+   }
 
 }
