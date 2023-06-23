@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-rest
+  labels:
+    app: spring-rest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-rest
+  template:
+    metadata:
+      labels:
+        app: spring-rest
+    spec:
+      containers:
+      - name: k8s-demo-cluster
+        image: imrankhanin3/test-repo
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DEPLOYED_PLATFORM
+          value: Kubernate Cluster
