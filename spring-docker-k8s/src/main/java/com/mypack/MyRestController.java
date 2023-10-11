@@ -27,8 +27,15 @@ public class MyRestController {
 	  		+	"<br/><br/><b>Application is running.</b> <br/><br/><b>Current time is : </b>" + new Date();
 	  	return returnValue;
 	}
-  
-	@PostMapping("/api/name")
+
+	/**
+	 * Sample html code to send user data
+	<form action="http://localhost:8080/api/details/" method="post">
+  		<input type="text" id="name" name="name">
+  		<input type="submit" value="Submit">
+	</form>
+	 */
+	@PostMapping("/api/details")
 	public String convertToUpper(@RequestParam String name) {
 		log.info("####### Converting name to uppercase. #######");
 		if (name == null || name.trim().length() == 0) {
