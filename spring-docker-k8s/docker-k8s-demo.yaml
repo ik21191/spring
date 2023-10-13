@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: k8s-demo-cluster
-        image: imrankhanin3/test-repo
+        image: imrankhanin3/spring-rest:1.0.0
         ports:
         - containerPort: 8080
         env:
